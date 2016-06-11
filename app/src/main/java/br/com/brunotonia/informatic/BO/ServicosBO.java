@@ -91,7 +91,7 @@ public class ServicosBO implements Serializable {
         return servicos;
     }
 
-    public ServicosVO selecionar(Context context, Long clienteID) throws Exception {
+    public ServicosVO selecionar(Context context, Long servicoID) throws Exception {
         /* Variáveis do BD */
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase db = helper.open();
@@ -99,7 +99,7 @@ public class ServicosBO implements Serializable {
         ServicosVO servicosVO = null;
         try {
             db.beginTransaction();
-            servicosVO = servicosDAO.selecionar(db, clienteID);
+            servicosVO = servicosDAO.selecionar(db, servicoID);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
