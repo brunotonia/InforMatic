@@ -39,7 +39,7 @@ public class DataBaseHelper implements Serializable {
             db.execSQL(ClientesConstants.CREATE_TABLE);
             db.execSQL(ServicosConstants.CREATE_TABLE);
             db.execSQL(OSSituacaoConstants.CREATE_TABLE);
-            db.execSQL(OServicosConstants.CREATE_TABLE);
+            //db.execSQL(OServicosConstants.CREATE_TABLE);
             /* Adiciona constantes do banco de dados */
             db.execSQL(OSSituacaoConstants.INSERT_SITUACAO_0);
             db.execSQL(OSSituacaoConstants.INSERT_SITUACAO_1);
@@ -50,7 +50,7 @@ public class DataBaseHelper implements Serializable {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             db.execSQL(ServicosConstants.DROP_TABLE);
             db.execSQL(OSSituacaoConstants.DROP_TABLE);
-            db.execSQL(OServicosConstants.DROP_TABLE);
+            //db.execSQL(OServicosConstants.DROP_TABLE);
             db.execSQL(ClientesConstants.DROP_TABLE);
             onCreate(db);
         }

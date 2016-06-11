@@ -7,40 +7,40 @@ import java.io.Serializable;
 import java.util.List;
 
 import br.com.brunotonia.informatic.Constants.DataBaseHelper;
-import br.com.brunotonia.informatic.DAO.ClientesDAO;
-import br.com.brunotonia.informatic.VO.ClientesVO;
+import br.com.brunotonia.informatic.DAO.ServicosDAO;
+import br.com.brunotonia.informatic.VO.ServicosVO;
 
 /**
  * Created by bruno on 10/06/16.
  */
-public class ClientesBO implements Serializable {
+public class ServicosBO implements Serializable {
 
     /* Singleton */
-    private static ClientesBO instance = null;
+    private static ServicosBO instance = null;
 
-    private ClientesDAO clientesDAO = null;
+    private ServicosDAO servicosDAO = null;
 
-    private ClientesBO() {
-        clientesDAO = new ClientesDAO();
+    private ServicosBO() {
+        servicosDAO = new ServicosDAO();
     }
 
-    public static ClientesBO getInstance() {
+    public static ServicosBO getInstance() {
         if (instance == null) {
-            instance = new ClientesBO();
+            instance = new ServicosBO();
         }
         return instance;
     }
 
-    public Long adicionar(Context context, ClientesVO cliente) throws Exception {
+    public Long adicionar(Context context, ServicosVO servicosVO) throws Exception {
         /* Variáveis do BD */
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
-        Long clienteID = -1L;
-        /* Grava Cliente no BD */
+        Long servicoID = -1L;
+        /* Grava Servico no BD */
         try {
             db.beginTransaction();
-            clienteID = clientesDAO.adicionar(db, cliente);
+            servicoID = servicosDAO.adicionar(db, servicosVO);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,19 +48,19 @@ public class ClientesBO implements Serializable {
             db.endTransaction();
             helper.close();
         }
-        return clienteID;
+        return servicoID;
     }
 
-    public boolean editar(Context context, ClientesVO cliente) throws Exception {
+    public boolean editar(Context context, ServicosVO servicosVO) throws Exception {
         /* Variáveis do BD */
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         boolean resultado = false;
-        /* Edita Cliente no BD */
+        /* Salva alterações do Servico no BD */
         try {
             db.beginTransaction();
-            resultado = clientesDAO.editar(db, cliente);
+            resultado = servicosDAO.editar(db, servicosVO);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,16 +71,16 @@ public class ClientesBO implements Serializable {
         return resultado;
     }
 
-    public List<ClientesVO> listar(Context context) throws Exception {
+    public List<ServicosVO> listar(Context context) throws Exception {
         /* Variáveis do BD */
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
-        List<ClientesVO> clientes = null;
-        /* Recupera Lista de Clientes do BD */
+        List<ServicosVO> servicos = null;
+        /* Recupera Lista de Servicos do BD */
         try {
             db.beginTransaction();
-            clientes = clientesDAO.listar(db);
+            servicos = servicosDAO.listar(db);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,18 +88,18 @@ public class ClientesBO implements Serializable {
             db.endTransaction();
             helper.close();
         }
-        return clientes;
+        return servicos;
     }
 
-    public ClientesVO selecionar(Context context, Long clienteID) throws Exception {
+    public ServicosVO selecionar(Context context, Long clienteID) throws Exception {
         /* Variáveis do BD */
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
-        ClientesVO cliente = null;
+        ServicosVO servicosVO = null;
         try {
             db.beginTransaction();
-            cliente = clientesDAO.selecionar(db, clienteID);
+            servicosVO = servicosDAO.selecionar(db, clienteID);
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,7 +108,7 @@ public class ClientesBO implements Serializable {
             db.endTransaction();
             helper.close();
         }
-        return cliente;
+        return servicosVO;
     }
 
 }

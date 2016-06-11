@@ -1,17 +1,13 @@
 package br.com.brunotonia.informatic.DAO;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.brunotonia.informatic.BO.ClientesBO;
 import br.com.brunotonia.informatic.Constants.ClientesConstants;
-import br.com.brunotonia.informatic.Constants.DataBaseHelper;
 import br.com.brunotonia.informatic.VO.ClientesVO;
 
 /**
