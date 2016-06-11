@@ -49,4 +49,24 @@ public class OrdemDeServicosBO implements Serializable {
         }
         return servicoID;
     }
+
+    public boolean editar(Context context, OrdemDeServicosVO ordemDeServicosVO) throws Exception {
+        /* Variáveis do BD */
+        DataBaseHelper helper = new DataBaseHelper(context);
+        SQLiteDatabase db = helper.open();
+        /* Variáveis do Método*/
+        boolean resultado = false;
+        /* Salva alterações do Servico no BD */
+        try {
+            db.beginTransaction();
+            resultado = ordemDeServicosDAO.editar(db, ordemDeServicosVO);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            helper.close();
+        }
+        return resultado;
+    }
 }

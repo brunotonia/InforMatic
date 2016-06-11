@@ -2,4 +2,14 @@
     <string name="app_name">InforMatic!</string>
     <string name="lblClientes">Clientes</string>
     <string name="lblOServicos">Ordems de Serviço</string>
+    <string name="lblClientesEdt">Editar Clientes</string>
+    <string name="lblClientesAdd">Adicionar Cliente</string>
+    <string name="lblNome">Nome</string>
+    <string name="lblTelefone">Telefone</string>
+    <string name="lblEndereco">Endereço</string>
+    <string name="lblEmail">E-mail</string>
+    <string name="lblSalvar">Salvar</string>
+    <string name="lblLimpar">Limpar</string>
+    <string name="lblAdicionar">Adicionar</string>
+    <string name="lblEditar">Editar</string>
 </resources>

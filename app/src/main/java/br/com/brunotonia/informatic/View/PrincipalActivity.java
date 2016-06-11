@@ -37,13 +37,13 @@ public class PrincipalActivity extends AppCompatActivity {
         btnOServicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamarTelaClientes();
+                chamarTelaOServicos();
             }
         });
 
     }
 
-    // Métodos para chamar novas telas
+    /* Métodos para chamar novas telas */
     private void chamarTelaClientes () {
         it = new Intent(this, ClientesMenuActivity.class);
         startActivity(it);

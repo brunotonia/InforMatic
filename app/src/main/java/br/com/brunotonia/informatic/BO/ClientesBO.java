@@ -91,7 +91,7 @@ public class ClientesBO implements Serializable {
         return clientes;
     }
 
-    public ClientesVO selecionar(Context context, Long clienteID) throws Exception {
+    public ClientesVO selecionar (Context context, Long clienteID) throws Exception {
         /* Variáveis do BD */
         DataBaseHelper helper = new DataBaseHelper(context);
         SQLiteDatabase db = helper.open();

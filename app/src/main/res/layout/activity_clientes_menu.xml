@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="@string/lblClientes"
         android:id="@+id/lblClientes"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -24,16 +24,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/imgClientes"
         android:layout_marginTop="39dp"
-        android:src="@drawable/imgClientes"
+        android:src="@drawable/img_clientes"
         android:layout_below="@+id/lblClientes"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/btnClientesAdd"
-        android:layout_above="@+id/btnClientesEdt"
+        android:text="@string/lblAdicionar"
+        android:id="@+id/btnAdicionar"
+        android:layout_above="@+id/btnEditar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
@@ -42,11 +42,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/btnClientesEdt"
+        android:text="@string/lblEditar"
+        android:id="@+id/btnEditar"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/btnClientesAdd"
-        android:layout_alignEnd="@+id/btnClientesAdd" />
+        android:layout_alignRight="@+id/btnAdicionar"
+        android:layout_alignEnd="@+id/btnAdicionar" />
 </RelativeLayout>
