@@ -6,11 +6,11 @@ import android.os.Bundle;
 import br.com.brunotonia.informatic.R;
 
 
-public class ClientesAddActivity extends AppCompatActivity {
+public class OSMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clientes_add);
+        setContentView(R.layout.activity_osmenu);
     }
 }

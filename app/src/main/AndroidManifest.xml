@@ -17,7 +17,12 @@
         </activity>
         <activity android:name=".View.ClientesMenuActivity" />
         <activity android:name=".View.ClientesAddActivity" />
-        <activity android:name=".View.ClientesListarActivity"></activity>
+        <activity android:name=".View.ClientesListarActivity" />
+        <activity android:name=".View.OSMenuActivity" />
+        <activity android:name=".View.OSListarActivity" />
+        <activity android:name=".View.ServicosMenuActivity" />
+        <activity android:name=".View.ServicosListarActivity" />
+        <activity android:name=".View.ServicosAddActivity"></activity>
     </application>
 
 </manifest>

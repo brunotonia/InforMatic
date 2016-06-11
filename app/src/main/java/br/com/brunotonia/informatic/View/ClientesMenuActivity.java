@@ -3,6 +3,9 @@ package br.com.brunotonia.informatic.View;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import br.com.brunotonia.informatic.R;
+
+
 public class ClientesMenuActivity extends AppCompatActivity {
 
     @Override
