@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/lblClientes"
-        android:id="@+id/lblClientes"
+        android:id="@+id/lblClientesSel"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:editable="false" />
@@ -25,7 +25,7 @@
         android:id="@+id/imgClientes"
         android:layout_marginTop="39dp"
         android:src="@drawable/img_clientes"
-        android:layout_below="@+id/lblClientes"
+        android:layout_below="@+id/lblClientesSel"
         android:layout_centerHorizontal="true" />
 
     <Button

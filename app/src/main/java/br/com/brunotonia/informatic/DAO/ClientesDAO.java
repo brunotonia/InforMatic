@@ -40,7 +40,8 @@ public class ClientesDAO {
         Cursor cursor = db.query(
                 ClientesConstants.TABLE_NAME,
                 new String[]{ClientesConstants.COLUMN_ID, ClientesConstants.COLUMN_NOME,
-                        ClientesConstants.COLUMN_TELEFONE, ClientesConstants.COLUMN_EMAIL},
+                        ClientesConstants.COLUMN_TELEFONE, ClientesConstants.COLUMN_ENDERECO,
+                        ClientesConstants.COLUMN_EMAIL},
                 null,
                 null,
                 null,
@@ -64,7 +65,8 @@ public class ClientesDAO {
         Cursor cursor = db.query(
                 ClientesConstants.TABLE_NAME,
                 new String[]{ClientesConstants.COLUMN_NOME,
-                        ClientesConstants.COLUMN_TELEFONE, ClientesConstants.COLUMN_EMAIL},
+                        ClientesConstants.COLUMN_TELEFONE, ClientesConstants.COLUMN_ENDERECO,
+                        ClientesConstants.COLUMN_EMAIL},
                 ClientesConstants.COLUMN_ID + " IS ? ",
                 new String[]{id.toString()},
                 null,

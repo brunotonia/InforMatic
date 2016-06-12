@@ -20,7 +20,7 @@ public class ClientesAddActivity extends AppCompatActivity {
     /* Variáveis entre telas */
     private Intent it = null;
     private Bundle params = null;
-    private Long clienteID = -3L;
+    private Long clienteID = null;
     private ClientesVO clientesVO = null;
 
     /* Declaração de elementos de interface */

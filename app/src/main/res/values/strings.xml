@@ -12,4 +12,5 @@
     <string name="lblLimpar">Limpar</string>
     <string name="lblAdicionar">Adicionar</string>
     <string name="lblEditar">Editar</string>
+    <string name="lblClientesSelecionar">Selecionar Cliente</string>
 </resources>
