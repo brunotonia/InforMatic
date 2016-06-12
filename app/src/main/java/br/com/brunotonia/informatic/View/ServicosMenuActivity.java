@@ -56,7 +56,7 @@ public class ServicosMenuActivity extends AppCompatActivity {
     private void chamarTelaClientesListar () {
         params = new Bundle();
         params.putLong("servicoID", -2L);
-        it = new Intent(this, ServicosAddActivity.class);
+        it = new Intent(this, ServicosListarActivity.class);
         it.putExtras(params);
         startActivity(it);
     }

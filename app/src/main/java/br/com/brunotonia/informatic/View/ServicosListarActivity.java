@@ -23,12 +23,12 @@ public class ServicosListarActivity extends AppCompatActivity {
     private Long servicoID = null;
 
     /* Outras Variáveis */
-    private List<ServicosVO> lista = null;
     private ServicosVO servicosVO = null;
+    private List<ServicosVO> lista = null;
     private ArrayAdapter<ServicosVO> adapter = null;
 
     /* Variáveis de Tela*/
-    private ListView listClientes = null;
+    private ListView listServicos = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class ServicosListarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_servicos_listar);
 
         /* Inicialização de elementos de interface */
-        listClientes = (ListView) findViewById(R.id.listClientes);
+        listServicos = (ListView) findViewById(R.id.listServicos);
 
         /* Recuperar params */
         recuperarParams();
@@ -50,14 +50,14 @@ public class ServicosListarActivity extends AppCompatActivity {
             startActivity(it);
         } else {
             adapter = new ArrayAdapter<ServicosVO>(this, android.R.layout.simple_list_item_1, lista);
-            listClientes.setAdapter(adapter);
+            listServicos.setAdapter(adapter);
         }
 
         /* Listeners */
-        listClientes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                servicosVO = (ServicosVO) listClientes.getItemAtPosition(position);
+                servicosVO = (ServicosVO) listServicos.getItemAtPosition(position);
                 chamarTelaServicosEditar(servicosVO);
             }
         });
@@ -71,7 +71,7 @@ public class ServicosListarActivity extends AppCompatActivity {
         servicoID = params.getLong("servicoID");
         /* servicoID > -1L é edição de Cliente */
         if (servicoID == -2L) {
-            carregarClientes();
+            carregarServicos();
         } else {
             /* Exibe mensagem de erro e volta a tela anterior */
             Toast.makeText(this, "Erro! Não foi possível carregar a lista de Clientes", Toast.LENGTH_LONG).show();
@@ -83,7 +83,7 @@ public class ServicosListarActivity extends AppCompatActivity {
     }
 
     /* Carrgar lista de Clientes */
-    private void carregarClientes() {
+    private void carregarServicos() {
         ServicosBO servicosBO = ServicosBO.getInstance();
         try {
             this.lista = servicosBO.listar(this);

@@ -16,6 +16,7 @@ public class PrincipalActivity extends AppCompatActivity {
     /* Declaração de elementos de interface */
     Button btnClientes = null;
     Button btnOServicos = null;
+    Button btnServicos = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class PrincipalActivity extends AppCompatActivity {
         /* Inicialização de elementos de interface */
         btnClientes = (Button) findViewById(R.id.btnClientes);
         btnOServicos = (Button) findViewById(R.id.btnOServicos);
+        btnServicos = (Button) findViewById(R.id.btnServicos);
 
         /* Listeners dos botões */
         btnClientes.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +43,13 @@ public class PrincipalActivity extends AppCompatActivity {
             }
         });
 
+        btnServicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chamarTelaServicos();
+            }
+        });
+
     }
 
     /* Métodos para chamar novas telas */
@@ -51,6 +60,11 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private void chamarTelaOServicos () {
         it = new Intent(this, OSMenuActivity.class);
+        startActivity(it);
+    }
+
+    private void chamarTelaServicos () {
+        it = new Intent(this, ServicosMenuActivity.class);
         startActivity(it);
     }
 }

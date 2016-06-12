@@ -130,7 +130,7 @@ public class ServicosAddActivity extends AppCompatActivity {
             if (resultado) {
                 /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
                 Toast.makeText(context, "Serviço editado com sucesso!", Toast.LENGTH_LONG).show();
-                it = new Intent(context, ClientesMenuActivity.class);
+                it = new Intent(context, ServicosMenuActivity.class);
                 startActivity(it);
             } else {
                 /* Exibe mensagem de erro */
@@ -146,7 +146,7 @@ public class ServicosAddActivity extends AppCompatActivity {
             if (reposta != -1L) {
                 /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
                 Toast.makeText(context, "Serviço adicionado com sucesso!", Toast.LENGTH_LONG).show();
-                it = new Intent(context, ClientesMenuActivity.class);
+                it = new Intent(context, ServicosMenuActivity.class);
                 startActivity(it);
             } else {
                 /* Exibe mensagem de erro */
