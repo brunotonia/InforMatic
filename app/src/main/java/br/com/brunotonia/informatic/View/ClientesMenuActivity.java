@@ -47,15 +47,17 @@ public class ClientesMenuActivity extends AppCompatActivity {
     /* Métodos para chamar novas telas */
     private void chamarTelaClientesAdd () {
         params = new Bundle();
-        params.putLong("clienteID", -1);
+        params.putLong("clienteID", -1L);
         it = new Intent(this, ClientesAddActivity.class);
+        it.putExtras(params);
         startActivity(it);
     }
 
     private void chamarTelaClientesListar () {
         params = new Bundle();
-        params.putLong("clienteID", -2);
+        params.putLong("clienteID", -2L);
         it = new Intent(this, ClientesListarActivity.class);
+        it.putExtras(params);
         startActivity(it);
     }
 

@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.io.Serializable;
 
-import br.com.brunotonia.informatic.Constants.DataBaseHelper;
+import br.com.brunotonia.informatic.DAO.DatabaseHelper;
 import br.com.brunotonia.informatic.DAO.OrdemDeServicosDAO;
 import br.com.brunotonia.informatic.VO.OrdemDeServicosVO;
 
@@ -32,7 +32,7 @@ public class OrdemDeServicosBO implements Serializable {
 
     public Long adicionar(Context context, OrdemDeServicosVO ordemDeServicosVO) throws Exception {
         /* Variáveis do BD */
-        DataBaseHelper helper = new DataBaseHelper(context);
+        DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         Long servicoID = -1L;
@@ -52,7 +52,7 @@ public class OrdemDeServicosBO implements Serializable {
 
     public boolean editar(Context context, OrdemDeServicosVO ordemDeServicosVO) throws Exception {
         /* Variáveis do BD */
-        DataBaseHelper helper = new DataBaseHelper(context);
+        DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         boolean resultado = false;

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.io.Serializable;
 import java.util.List;
 
-import br.com.brunotonia.informatic.Constants.DataBaseHelper;
+import br.com.brunotonia.informatic.DAO.DatabaseHelper;
 import br.com.brunotonia.informatic.DAO.ServicosDAO;
 import br.com.brunotonia.informatic.VO.ServicosVO;
 
@@ -33,7 +33,7 @@ public class ServicosBO implements Serializable {
 
     public Long adicionar(Context context, ServicosVO servicosVO) throws Exception {
         /* Variáveis do BD */
-        DataBaseHelper helper = new DataBaseHelper(context);
+        DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         Long servicoID = -1L;
@@ -53,7 +53,7 @@ public class ServicosBO implements Serializable {
 
     public boolean editar(Context context, ServicosVO servicosVO) throws Exception {
         /* Variáveis do BD */
-        DataBaseHelper helper = new DataBaseHelper(context);
+        DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         boolean resultado = false;
@@ -73,7 +73,7 @@ public class ServicosBO implements Serializable {
 
     public List<ServicosVO> listar(Context context) throws Exception {
         /* Variáveis do BD */
-        DataBaseHelper helper = new DataBaseHelper(context);
+        DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         List<ServicosVO> servicos = null;
@@ -93,7 +93,7 @@ public class ServicosBO implements Serializable {
 
     public ServicosVO selecionar(Context context, Long servicoID) throws Exception {
         /* Variáveis do BD */
-        DataBaseHelper helper = new DataBaseHelper(context);
+        DatabaseHelper helper = new DatabaseHelper(context);
         SQLiteDatabase db = helper.open();
         /* Variáveis do Método*/
         ServicosVO servicosVO = null;

@@ -1,4 +1,4 @@
-package br.com.brunotonia.informatic.Constants;
+package br.com.brunotonia.informatic.DAO;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,17 +6,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.io.Serializable;
 
+import br.com.brunotonia.informatic.Constants.ClientesConstants;
+import br.com.brunotonia.informatic.Constants.DatabaseConstants;
+import br.com.brunotonia.informatic.Constants.OSSituacaoConstants;
+import br.com.brunotonia.informatic.Constants.ServicosConstants;
+
 /**
  * Created by bruno on 10/06/16.
  */
-public class DataBaseHelper implements Serializable {
+public class DatabaseHelper implements Serializable {
 
     private DBHelper helper = null;
     private SQLiteDatabase db = null;
 
     private static final long serialVersionUID = 1L;
 
-    public DataBaseHelper (Context context) {
+    public DatabaseHelper(Context context) {
         helper = new DBHelper(context);
     }
 
@@ -31,7 +36,7 @@ public class DataBaseHelper implements Serializable {
     public class DBHelper extends SQLiteOpenHelper {
 
         public DBHelper(Context context) {
-            super(context, DataBaseConstants.DB_NAME, null, DataBaseConstants.VERSION);
+            super(context, DatabaseConstants.DB_NAME, null, DatabaseConstants.VERSION);
         }
 
         @Override

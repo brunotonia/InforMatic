@@ -19,7 +19,7 @@ public class ClientesAddActivity extends AppCompatActivity {
     /* Variáveis entre telas */
     private Intent it = null;
     private Bundle params = null;
-    private Long clienteID = null;
+    private Long clienteID = -3L;
     private ClientesVO clientesVO = null;
 
     /* Declaração de elementos de interface */
@@ -77,7 +77,7 @@ public class ClientesAddActivity extends AppCompatActivity {
         it = getIntent();
         params = it.getExtras();
         clienteID = params.getLong("clienteID");
-        /* clienteID > 0 é edição de Cliente */
+        /* clienteID > -1L é edição de Cliente */
         if (clienteID > -1L) {
             lblClientesAdd.setText("Editar Cliente");
             recuperarCliente(clienteID);
@@ -88,6 +88,7 @@ public class ClientesAddActivity extends AppCompatActivity {
                 /* Exibe mensagem de erro e volta a tela anterior */
                 Toast.makeText(this, "Erro! Não foi possível carregar os dados do Cliente", Toast.LENGTH_LONG).show();
                 params.putLong("clienteID", -2);
+                it.putExtras(params);
                 it = new Intent(this, ClientesListarActivity.class);
                 startActivity(it);
             }
@@ -119,10 +120,8 @@ public class ClientesAddActivity extends AppCompatActivity {
     /* Salvar cliente */
     private void salvarCliente() {
         ClientesBO clientesBO = ClientesBO.getInstance();
-        clientesVO.setNome(txtNome.getText().toString());
-        clientesVO.setTelefone(txtTelefone.getText().toString());
-        clientesVO.setEndereco(txtEndereco.getText().toString());
-        clientesVO.setEmail(txtEmail.getText().toString());
+        clientesVO = new ClientesVO(txtNome.getText().toString(), txtTelefone.getText().toString(),
+                txtEndereco.getText().toString(), txtEmail.getText().toString());
         if (clienteID != -1l) {
             boolean resultado = false;
             try {
@@ -146,7 +145,7 @@ public class ClientesAddActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (reposta > -1) {
+            if (reposta > -1L) {
                 /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
                 Toast.makeText(this, "Cliente adicionado com sucesso!", Toast.LENGTH_LONG).show();
                 it = new Intent(this, ClientesMenuActivity.class);
