@@ -3,6 +3,7 @@ package br.com.brunotonia.informatic.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,6 +47,28 @@ public class ClientesAddActivity extends AppCompatActivity {
 
         /* Recuperar params */
         recuperarParams();
+
+        /* Listeners dos  botões */
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                salvarCliente();
+            }
+        });
+
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (clienteID != -1L) {
+                    recuperarCliente(clienteID);
+                } else {
+                    txtNome.setText("");
+                    txtTelefone.setText("");
+                    txtEndereco.setText("");
+                    txtEmail.setText("");
+                }
+            }
+        });
 
     }
 
@@ -93,5 +116,46 @@ public class ClientesAddActivity extends AppCompatActivity {
         txtEmail.setText(cliente.getEmail());
     }
 
+    /* Salvar cliente */
+    private void salvarCliente() {
+        ClientesBO clientesBO = ClientesBO.getInstance();
+        clientesVO.setNome(txtNome.getText().toString());
+        clientesVO.setTelefone(txtTelefone.getText().toString());
+        clientesVO.setEndereco(txtEndereco.getText().toString());
+        clientesVO.setEmail(txtEmail.getText().toString());
+        if (clienteID != -1l) {
+            boolean resultado = false;
+            try {
+                resultado = clientesBO.editar(this, clientesVO);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (resultado) {
+                /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
+                Toast.makeText(this, "Cliente editado com sucesso!", Toast.LENGTH_LONG).show();
+                it = new Intent(this, ClientesMenuActivity.class);
+                startActivity(it);
+            } else {
+                /* Exibe mensagem de erro */
+                Toast.makeText(this, "Erro! Não foi possível editar os dados do Cliente", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Long reposta = -1L;
+            try {
+                reposta = clientesBO.adicionar(this, clientesVO);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (reposta > -1) {
+                /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
+                Toast.makeText(this, "Cliente adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                it = new Intent(this, ClientesMenuActivity.class);
+                startActivity(it);
+            } else {
+                /* Exibe mensagem de erro */
+                Toast.makeText(this, "Erro! Não foi possível adicionar o Cliente", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
 
 }
