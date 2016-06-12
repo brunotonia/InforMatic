@@ -1,5 +1,6 @@
 package br.com.brunotonia.informatic.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,7 +53,7 @@ public class ClientesAddActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                salvarCliente();
+                salvarCliente(ClientesAddActivity.this);
             }
         });
 
@@ -118,7 +119,7 @@ public class ClientesAddActivity extends AppCompatActivity {
     }
 
     /* Salvar cliente */
-    private void salvarCliente() {
+    private void salvarCliente(Context context) {
         ClientesBO clientesBO = ClientesBO.getInstance();
         clientesVO = new ClientesVO(txtNome.getText().toString(), txtTelefone.getText().toString(),
                 txtEndereco.getText().toString(), txtEmail.getText().toString());
@@ -131,28 +132,28 @@ public class ClientesAddActivity extends AppCompatActivity {
             }
             if (resultado) {
                 /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
-                Toast.makeText(this, "Cliente editado com sucesso!", Toast.LENGTH_LONG).show();
-                it = new Intent(this, ClientesMenuActivity.class);
+                Toast.makeText(context, "Cliente editado com sucesso!", Toast.LENGTH_LONG).show();
+                it = new Intent(context, ClientesMenuActivity.class);
                 startActivity(it);
             } else {
                 /* Exibe mensagem de erro */
-                Toast.makeText(this, "Erro! Não foi possível editar os dados do Cliente", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Erro! Não foi possível editar os dados do Cliente", Toast.LENGTH_LONG).show();
             }
         } else {
             Long reposta = -1L;
             try {
-                reposta = clientesBO.adicionar(this, clientesVO);
+                reposta = clientesBO.adicionar(context, clientesVO);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             if (reposta > -1L) {
                 /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
-                Toast.makeText(this, "Cliente adicionado com sucesso!", Toast.LENGTH_LONG).show();
-                it = new Intent(this, ClientesMenuActivity.class);
+                Toast.makeText(context, "Cliente adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                it = new Intent(context, ClientesMenuActivity.class);
                 startActivity(it);
             } else {
                 /* Exibe mensagem de erro */
-                Toast.makeText(this, "Erro! Não foi possível adicionar o Cliente", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Erro! Não foi possível adicionar o Cliente", Toast.LENGTH_LONG).show();
             }
         }
     }

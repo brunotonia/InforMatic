@@ -18,6 +18,7 @@ public class ClientesDAO {
         ContentValues values = new ContentValues();
         values.put(ClientesConstants.COLUMN_NOME, cliente.getNome());
         values.put(ClientesConstants.COLUMN_TELEFONE, cliente.getTelefone());
+        values.put(ClientesConstants.COLUMN_ENDERECO, cliente.getEndereco());
         values.put(ClientesConstants.COLUMN_EMAIL, cliente.getEmail());
         return db.insert(ClientesConstants.TABLE_NAME, null, values);
     }
@@ -26,6 +27,7 @@ public class ClientesDAO {
         ContentValues values = new ContentValues();
         values.put(ClientesConstants.COLUMN_ID, cliente.getId());
         values.put(ClientesConstants.COLUMN_TELEFONE, cliente.getTelefone());
+        values.put(ClientesConstants.COLUMN_ENDERECO, cliente.getEndereco());
         values.put(ClientesConstants.COLUMN_EMAIL, cliente.getEmail());
         String busca = ClientesConstants.COLUMN_ID + " =? ";
         String[] dados = new String[] {cliente.getId().toString()};
