@@ -46,7 +46,7 @@ public class ClientesSelecionarActivity extends AppCompatActivity {
             Toast.makeText(this, "Erro! Não foi possível carregar a lista de Clientes", Toast.LENGTH_LONG).show();
             params = new Bundle();
             it.putExtras(params);
-            it = new Intent(this, ClientesMenuActivity.class);
+            it = new Intent(this, OSMenuActivity.class);
             startActivity(it);
         } else {
             adapter = new ArrayAdapter<ClientesVO>(this, android.R.layout.simple_list_item_1, lista);
@@ -67,18 +67,7 @@ public class ClientesSelecionarActivity extends AppCompatActivity {
     private void recuperarParams() {
         it = getIntent();
         params = it.getExtras();
-        clienteID = params.getLong("clienteID");
-        /* clienteID > -1L é edição de Cliente */
-        if (clienteID == -2L) {
-            carregarClientes();
-        } else {
-            /* Exibe mensagem de erro e volta a tela anterior */
-            Toast.makeText(this, "Erro! Não foi possível carregar a lista de Clientes", Toast.LENGTH_LONG).show();
-            params = new Bundle();
-            it.putExtras(params);
-            it = new Intent(this, ClientesMenuActivity.class);
-            startActivity(it);
-        }
+        carregarClientes();
     }
 
     /* Carrgar lista de Clientes */
