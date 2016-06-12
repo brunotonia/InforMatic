@@ -125,6 +125,7 @@ public class ClientesAddActivity extends AppCompatActivity {
                 txtEndereco.getText().toString(), txtEmail.getText().toString());
         if (clienteID != -1l) {
             boolean resultado = false;
+            clientesVO.setId(clienteID);
             try {
                 resultado = clientesBO.editar(this, clientesVO);
             } catch (Exception e) {
@@ -146,7 +147,7 @@ public class ClientesAddActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            if (reposta > -1L) {
+            if (reposta != -1L) {
                 /* Exibe mensagem de sucesso e retorna para tela ClientesMenuActivity */
                 Toast.makeText(context, "Cliente adicionado com sucesso!", Toast.LENGTH_LONG).show();
                 it = new Intent(context, ClientesMenuActivity.class);

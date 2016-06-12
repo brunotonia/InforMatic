@@ -31,8 +31,8 @@ public class ClientesDAO {
         values.put(ClientesConstants.COLUMN_EMAIL, cliente.getEmail());
         String busca = ClientesConstants.COLUMN_ID + " =? ";
         String[] dados = new String[] {cliente.getId().toString()};
-        Integer l = db.update(ClientesConstants.TABLE_NAME, values, busca, dados);
-        return (l > 0);
+        Integer resultado = db.update(ClientesConstants.TABLE_NAME, values, busca, dados);
+        return (resultado != 0);
     }
 
     public List<ClientesVO> listar(SQLiteDatabase db) throws Exception {
