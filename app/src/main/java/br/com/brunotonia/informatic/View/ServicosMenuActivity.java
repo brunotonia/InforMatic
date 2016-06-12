@@ -48,7 +48,7 @@ public class ServicosMenuActivity extends AppCompatActivity {
     private void chamarTelaClientesAdd () {
         params = new Bundle();
         params.putLong("servicoID", -1L);
-        it = new Intent(this, ClientesAddActivity.class);
+        it = new Intent(this, ServicosAddActivity.class);
         it.putExtras(params);
         startActivity(it);
     }
@@ -56,7 +56,7 @@ public class ServicosMenuActivity extends AppCompatActivity {
     private void chamarTelaClientesListar () {
         params = new Bundle();
         params.putLong("servicoID", -2L);
-        it = new Intent(this, ClientesListarActivity.class);
+        it = new Intent(this, ServicosAddActivity.class);
         it.putExtras(params);
         startActivity(it);
     }

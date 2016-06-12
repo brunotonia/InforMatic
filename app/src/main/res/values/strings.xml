@@ -13,4 +13,10 @@
     <string name="lblAdicionar">Adicionar</string>
     <string name="lblEditar">Editar</string>
     <string name="lblClientesSelecionar">Selecionar Cliente</string>
+    <string name="lblServicos">Serviços</string>
+    <string name="lblServicosAdd">Adicionar Serviço</string>
+    <string name="lblServico">Serviço</string>
+    <string name="lblValor">Valor (R$)</string>
+    <string name="lblDescricao">Descrição</string>
+    <string name="lblServicosSelecionar">Selecionar Serviço</string>
 </resources>
