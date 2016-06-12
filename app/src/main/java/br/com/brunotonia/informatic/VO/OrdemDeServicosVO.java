@@ -1,5 +1,9 @@
 package br.com.brunotonia.informatic.VO;
 
+import android.content.Context;
+
+import br.com.brunotonia.informatic.BO.ClientesBO;
+
 /**
  * Created by bruno on 10/06/16.
  */

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import br.com.brunotonia.informatic.R;
 
@@ -13,10 +14,14 @@ public class PrincipalActivity extends AppCompatActivity {
     /* Variáveis entre telas */
     private Intent it = null;
 
+    /* Easter Egg */
+    private Integer contagem = 0;
+
     /* Declaração de elementos de interface */
-    Button btnClientes = null;
-    Button btnOServicos = null;
-    Button btnServicos = null;
+    private Button btnClientes = null;
+    private Button btnOServicos = null;
+    private Button btnServicos = null;
+    private ImageView imgLogo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +32,13 @@ public class PrincipalActivity extends AppCompatActivity {
         btnClientes = (Button) findViewById(R.id.btnClientes);
         btnOServicos = (Button) findViewById(R.id.btnOServicos);
         btnServicos = (Button) findViewById(R.id.btnServicos);
+        imgLogo = (ImageView) findViewById(R.id.imgLogo);
 
         /* Listeners dos botões */
         btnClientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                contagem = 0;
                 chamarTelaClientes();
             }
         });
@@ -39,6 +46,7 @@ public class PrincipalActivity extends AppCompatActivity {
         btnOServicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                contagem = 0;
                 chamarTelaOServicos();
             }
         });
@@ -46,7 +54,19 @@ public class PrincipalActivity extends AppCompatActivity {
         btnServicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                contagem = 0;
                 chamarTelaServicos();
+            }
+        });
+
+        imgLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (contagem == 5) {
+                    chamarTelaSobre();
+                } else {
+                    contagem++;
+                }
             }
         });
 
@@ -65,6 +85,11 @@ public class PrincipalActivity extends AppCompatActivity {
 
     private void chamarTelaServicos () {
         it = new Intent(this, ServicosMenuActivity.class);
+        startActivity(it);
+    }
+
+    private void chamarTelaSobre () {
+        it = new Intent(this, DesenvolvedoresActivity.class);
         startActivity(it);
     }
 }

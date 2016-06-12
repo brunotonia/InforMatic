@@ -22,7 +22,12 @@
         <activity android:name=".View.OSListarActivity" />
         <activity android:name=".View.ServicosMenuActivity" />
         <activity android:name=".View.ServicosListarActivity" />
-        <activity android:name=".View.ServicosAddActivity"></activity>
+        <activity android:name=".View.ServicosAddActivity" />
+        <activity android:name=".View.DesenvolvedoresActivity" />
+        <activity android:name=".View.ClientesSelecionarActivity" />
+        <activity android:name=".View.ServicosSelecionarActivity" />
+        <activity android:name=".View.OSVisualizarMenuActivity" />
+        <activity android:name=".View.OSServicosMenuActivity"></activity>
     </application>
 
 </manifest>

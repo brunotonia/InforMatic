@@ -19,4 +19,5 @@
     <string name="lblValor">Valor (R$)</string>
     <string name="lblDescricao">Descrição</string>
     <string name="lblServicosSelecionar">Selecionar Serviço</string>
+    <string name="lblVisualizar">Visualizar</string>
 </resources>

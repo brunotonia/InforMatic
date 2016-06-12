@@ -111,4 +111,24 @@ public class ClientesBO implements Serializable {
         return cliente;
     }
 
+    public String recuperaNome (Context context, Long clienteID) throws Exception {
+        /* Variáveis do BD */
+        DatabaseHelper helper = new DatabaseHelper(context);
+        SQLiteDatabase db = helper.open();
+        /* Variáveis do Método*/
+        ClientesVO cliente = null;
+        try {
+            db.beginTransaction();
+            cliente = clientesDAO.selecionar(db, clienteID);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            db.endTransaction();
+            helper.close();
+        }
+        return cliente.getNome();
+    }
+
 }

@@ -9,4 +9,56 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.brunotonia.informatic.View.OSMenuActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lblOServicos"
+        android:id="@+id/lblOS"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgOS"
+        android:layout_below="@+id/lblOS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/img_os" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblAdicionar"
+        android:id="@+id/btnAdicionar"
+        android:nestedScrollingEnabled="true"
+        android:layout_above="@+id/btnEditar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/btnEditar"
+        android:layout_alignEnd="@+id/btnEditar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblEditar"
+        android:id="@+id/btnEditar"
+        android:layout_above="@+id/btnVisualizar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblVisualizar"
+        android:id="@+id/btnVisualizar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
