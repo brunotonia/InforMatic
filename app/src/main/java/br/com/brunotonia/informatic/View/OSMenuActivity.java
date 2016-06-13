@@ -54,7 +54,7 @@ public class OSMenuActivity extends AppCompatActivity {
 
     /* Métodos para chamar novas telas */
     private void chamarTelaAdicionarOS() {
-        it = new Intent(this, ClientesSelecionarActivity.class);
+        it = new Intent(this, OSClientesSelecionarActivity.class);
         startActivity(it);
     }
 

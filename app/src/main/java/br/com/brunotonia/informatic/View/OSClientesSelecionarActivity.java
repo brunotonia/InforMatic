@@ -15,7 +15,7 @@ import br.com.brunotonia.informatic.BO.ClientesBO;
 import br.com.brunotonia.informatic.R;
 import br.com.brunotonia.informatic.VO.ClientesVO;
 
-public class ClientesSelecionarActivity extends AppCompatActivity {
+public class OSClientesSelecionarActivity extends AppCompatActivity {
 
     /* Variáveis entre telas */
     private Intent it = null;
@@ -33,7 +33,7 @@ public class ClientesSelecionarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clientes_selecionar);
+        setContentView(R.layout.activity_osclientes_selecionar);
 
         /* Inicialização de elementos de interface */
         listClientes = (ListView) findViewById(R.id.listClientes);
@@ -58,7 +58,7 @@ public class ClientesSelecionarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 clientesVO = (ClientesVO) listClientes.getItemAtPosition(position);
-                chamarTelaClientesEditar(clientesVO);
+                chamarTelaOSServicosMenu(clientesVO);
             }
         });
     }
@@ -81,10 +81,12 @@ public class ClientesSelecionarActivity extends AppCompatActivity {
     }
 
     /* Metodo para chamar telas */
-    private void chamarTelaClientesEditar(ClientesVO clientesVO) {
+    private void chamarTelaOSServicosMenu(ClientesVO clientesVO) {
         params = new Bundle();
         params.putLong("clienteID", clientesVO.getId());
-        it = new Intent(this, ClientesAddActivity.class);
+        params.putLong("osID", -1L);
+        params.putInt("osAção", 0); /* Ação == 0 Adicionar - Ação == 1 Editar */
+        it = new Intent(this, OSServicosMenuActivity.class);
         it.putExtras(params);
         startActivity(it);
     }
