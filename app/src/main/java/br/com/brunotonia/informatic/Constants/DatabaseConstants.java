@@ -5,5 +5,5 @@ package br.com.brunotonia.informatic.Constants;
  */
 public interface DatabaseConstants {
         String DB_NAME = "informatic.db";
-        Integer VERSION = 5;
+        Integer VERSION = 9;
 }

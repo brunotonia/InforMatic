@@ -8,19 +8,19 @@ import br.com.brunotonia.informatic.BO.ClientesBO;
 public class OSServicosVO {
 
     private Long id;
-    private Long cliente;
+    private Long os;
     private Long servico;
     private Float valor;
 
-    public OSServicosVO(Long cliente, Long servico, Float valor) {
-        this.cliente = cliente;
+    public OSServicosVO(Long os, Long servico, Float valor) {
+        this.os = os;
         this.servico = servico;
         this.valor = valor;
     }
 
-    public OSServicosVO(Long id, Long cliente, Long servico, Float valor) {
+    public OSServicosVO(Long id, Long os, Long servico, Float valor) {
         this.id = id;
-        this.cliente = cliente;
+        this.os = os;
         this.servico = servico;
         this.valor = valor;
     }
@@ -33,12 +33,12 @@ public class OSServicosVO {
         this.id = id;
     }
 
-    public Long getCliente() {
-        return cliente;
+    public Long getOs() {
+        return os;
     }
 
-    public void setCliente(Long cliente) {
-        this.cliente = cliente;
+    public void setOs(Long os) {
+        this.os = os;
     }
 
     public Long getServico() {

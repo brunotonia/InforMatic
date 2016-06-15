@@ -8,8 +8,11 @@ import java.io.Serializable;
 
 import br.com.brunotonia.informatic.Constants.ClientesConstants;
 import br.com.brunotonia.informatic.Constants.DatabaseConstants;
+import br.com.brunotonia.informatic.Constants.OSServicosContants;
 import br.com.brunotonia.informatic.Constants.OSSituacaoConstants;
+import br.com.brunotonia.informatic.Constants.OrdemDeServicosConstants;
 import br.com.brunotonia.informatic.Constants.ServicosConstants;
+import br.com.brunotonia.informatic.VO.OrdemDeServicosVO;
 
 /**
  * Created by bruno on 10/06/16.
@@ -44,7 +47,8 @@ public class DatabaseHelper implements Serializable {
             db.execSQL(ClientesConstants.CREATE_TABLE);
             db.execSQL(ServicosConstants.CREATE_TABLE);
             db.execSQL(OSSituacaoConstants.CREATE_TABLE);
-            //db.execSQL(OServicosConstants.CREATE_TABLE);
+            db.execSQL(OrdemDeServicosConstants.CREATE_TABLE);
+            db.execSQL(OSServicosContants.CREATE_TABLE);
             /* Adiciona constantes do banco de dados */
             db.execSQL(OSSituacaoConstants.INSERT_SITUACAO_0);
             db.execSQL(OSSituacaoConstants.INSERT_SITUACAO_1);

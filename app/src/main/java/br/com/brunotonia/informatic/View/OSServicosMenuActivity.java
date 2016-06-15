@@ -34,6 +34,8 @@ public class OSServicosMenuActivity extends AppCompatActivity {
     private Button btnConcluir = null;
     private Button btnServicos = null;
 
+    /* Outras Variáveis */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +94,9 @@ public class OSServicosMenuActivity extends AppCompatActivity {
     }
 
     /* Recuperar Serviços */
+    private void recuperarServicos(Context context){
+
+    }
 
     /* Calcula Valor */
     private Float calculaValor() {
