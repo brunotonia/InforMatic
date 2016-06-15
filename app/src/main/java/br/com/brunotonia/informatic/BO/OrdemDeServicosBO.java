@@ -69,4 +69,24 @@ public class OrdemDeServicosBO implements Serializable {
         }
         return resultado;
     }
+
+    public OrdemDeServicosVO selecionar(Context context, Long osID) throws Exception {
+        /* Variáveis do BD */
+        DatabaseHelper helper = new DatabaseHelper(context);
+        SQLiteDatabase db = helper.open();
+        /* Variáveis do Método*/
+        OrdemDeServicosVO ordemDeServicosVO = null;
+        try {
+            db.beginTransaction();
+            ordemDeServicosVO = ordemDeServicosDAO.selecionar(db, osID);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            db.endTransaction();
+            helper.close();
+        }
+        return ordemDeServicosVO;
+    }
 }

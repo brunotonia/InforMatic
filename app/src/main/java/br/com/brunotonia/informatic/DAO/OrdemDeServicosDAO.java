@@ -49,14 +49,14 @@ public class OrdemDeServicosDAO {
         while (cursor.moveToNext()) {
             Long id = cursor.getLong(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_ID));
             Long cliente = cursor.getLong(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_CLIENTE));
-            Integer situacao = cursor.getInt(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_SITUACAO));
+            Long situacao = cursor.getLong(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_SITUACAO));
             OrdemDeServicosVO ordemDeServicosVO = new OrdemDeServicosVO(id, cliente, situacao);
             listaOS.add(ordemDeServicosVO);
         }
         return listaOS;
     }
 
-    public List<OrdemDeServicosVO> listar(SQLiteDatabase db, Integer situacao) throws Exception {
+    public List<OrdemDeServicosVO> listar(SQLiteDatabase db, Long situacao) throws Exception {
         List<OrdemDeServicosVO> listaOS = new ArrayList<>();
         Cursor cursor = db.query(
                 OrdemDeServicosConstants.TABLE_NAME,
@@ -91,10 +91,12 @@ public class OrdemDeServicosDAO {
         );
         while (cursor.moveToNext()) {
             Long cliente = cursor.getLong(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_CLIENTE));
-            Integer situacao = cursor.getInt(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_SITUACAO));
+            Long situacao = cursor.getLong(cursor.getColumnIndex(OrdemDeServicosConstants.COLUMN_SITUACAO));
             ordemDeServicosVO = new OrdemDeServicosVO(id, cliente, situacao);
         }
         return ordemDeServicosVO;
     }
+
+
 
 }
