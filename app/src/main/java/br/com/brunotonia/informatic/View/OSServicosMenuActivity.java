@@ -4,14 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import br.com.brunotonia.informatic.BO.ClientesBO;
+import br.com.brunotonia.informatic.BO.OSServicosBO;
 import br.com.brunotonia.informatic.BO.OrdemDeServicosBO;
 import br.com.brunotonia.informatic.R;
 import br.com.brunotonia.informatic.VO.ClientesVO;
+import br.com.brunotonia.informatic.VO.OSServicosVO;
 import br.com.brunotonia.informatic.VO.OrdemDeServicosVO;
 
 public class OSServicosMenuActivity extends AppCompatActivity {
@@ -20,8 +25,6 @@ public class OSServicosMenuActivity extends AppCompatActivity {
     private Intent it = null;
     private Bundle params = null;
     private Long osID = null;
-    private OrdemDeServicosVO ordemDeServicosVO = null;
-    private ClientesVO clientesVO = null;
 
     /* Variáveis de Tela*/
     private TextView lblOSid = null;
@@ -35,6 +38,10 @@ public class OSServicosMenuActivity extends AppCompatActivity {
     private Button btnServicos = null;
 
     /* Outras Variáveis */
+    private OrdemDeServicosVO ordemDeServicosVO = null;
+    private ClientesVO clientesVO = null;
+    private List<OSServicosVO> lista = null;
+    private ArrayAdapter<OSServicosVO> adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +65,15 @@ public class OSServicosMenuActivity extends AppCompatActivity {
         /* Editar rótulos */
         editarRotulos();
 
+        /* Varifica se lista vazia */
+        if (lista.isEmpty()) {
+        } else {
+            adapter = new ArrayAdapter<OSServicosVO>(this, android.R.layout.simple_list_item_1, lista);
+            listServicos.setAdapter(adapter);
+            /* Edita lblValor */
+            lblValor.setText(calculaValor().toString());
+        }
+
     }
 
     /* Recuperar params */
@@ -68,10 +84,14 @@ public class OSServicosMenuActivity extends AppCompatActivity {
         // chamar outros métodos aqui
         recuperarOS(context);
         recuperarCliente(context);
-
+        carregarOSServicos();
     }
 
     /* Carregar params */
+    private void carregarParams() {
+        params = new Bundle();
+        params.putLong("osID", osID);
+    }
 
     /* Recuperar OS */
     private void recuperarOS (Context context) {
@@ -93,14 +113,23 @@ public class OSServicosMenuActivity extends AppCompatActivity {
         }
     }
 
-    /* Recuperar Serviços */
-    private void recuperarServicos(Context context){
-
+    /* Carrgar lista de OSServicos */
+    private void carregarOSServicos() {
+        OSServicosBO osServicosBO = OSServicosBO.getInstance();
+        try {
+            this.lista = osServicosBO.listar(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /* Calcula Valor */
     private Float calculaValor() {
-        return 0F;
+        Float resultado = 0F;
+        for (OSServicosVO osServicosVO : lista) {
+            resultado += osServicosVO.getValor();
+        }
+        return resultado;
     }
 
     /* Editar rótulos */

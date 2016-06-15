@@ -23,13 +23,13 @@ public class ClientesListarActivity extends AppCompatActivity {
     private Bundle params = null;
     private Long clienteID = null;
 
+    /* Variáveis de Tela*/
+    private ListView listClientes = null;
+
     /* Outras Variáveis */
     private List<ClientesVO> lista = null;
     private ClientesVO clientesVO = null;
     private ArrayAdapter<ClientesVO> adapter = null;
-
-    /* Variáveis de Tela*/
-    private ListView listClientes = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
