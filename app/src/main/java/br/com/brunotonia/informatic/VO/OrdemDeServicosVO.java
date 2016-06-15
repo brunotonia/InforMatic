@@ -11,14 +11,14 @@ public class OrdemDeServicosVO {
 
     private Long id;
     private Long cliente;
-    private Integer situacao;
+    private Long situacao;
 
-    public OrdemDeServicosVO(Long cliente, Integer situacao) {
+    public OrdemDeServicosVO(Long cliente, Long situacao) {
         this.cliente = cliente;
         this.situacao = situacao;
     }
 
-    public OrdemDeServicosVO(Long id, Long cliente, Integer situacao) {
+    public OrdemDeServicosVO(Long id, Long cliente, Long situacao) {
         this.id = id;
         this.cliente = cliente;
         this.situacao = situacao;
@@ -40,11 +40,11 @@ public class OrdemDeServicosVO {
         this.cliente = cliente;
     }
 
-    public Integer getSituacao() {
+    public Long getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(Integer situacao) {
+    public void setSituacao(Long situacao) {
         this.situacao = situacao;
     }
 

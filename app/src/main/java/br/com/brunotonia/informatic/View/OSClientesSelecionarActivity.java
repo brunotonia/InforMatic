@@ -1,5 +1,6 @@
 package br.com.brunotonia.informatic.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,15 +13,17 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.com.brunotonia.informatic.BO.ClientesBO;
+import br.com.brunotonia.informatic.BO.OrdemDeServicosBO;
 import br.com.brunotonia.informatic.R;
 import br.com.brunotonia.informatic.VO.ClientesVO;
+import br.com.brunotonia.informatic.VO.OrdemDeServicosVO;
 
 public class OSClientesSelecionarActivity extends AppCompatActivity {
 
     /* Variáveis entre telas */
     private Intent it = null;
     private Bundle params = null;
-    private Long clienteID = null;
+    private Long osID = null;
 
     /* Outras Variáveis */
     private List<ClientesVO> lista = null;
@@ -58,7 +61,7 @@ public class OSClientesSelecionarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 clientesVO = (ClientesVO) listClientes.getItemAtPosition(position);
-                chamarTelaOSServicosMenu(clientesVO);
+                chamarTelaOSServicosMenu(OSClientesSelecionarActivity.this, clientesVO);
             }
         });
     }
@@ -68,6 +71,12 @@ public class OSClientesSelecionarActivity extends AppCompatActivity {
         it = getIntent();
         params = it.getExtras();
         carregarClientes();
+    }
+
+    /* Carregar params */
+    private void carregarParams() {
+        params = new Bundle();
+        params.putLong("osID", osID);
     }
 
     /* Carrgar lista de Clientes */
@@ -81,13 +90,24 @@ public class OSClientesSelecionarActivity extends AppCompatActivity {
     }
 
     /* Metodo para chamar telas */
-    private void chamarTelaOSServicosMenu(ClientesVO clientesVO) {
-        params = new Bundle();
-        params.putLong("clienteID", clientesVO.getId());
-        params.putLong("osID", -1L);
-        params.putInt("osAção", 0); /* Ação == 0 Adicionar - Ação == 1 Editar */
+    private void chamarTelaOSServicosMenu(Context context, ClientesVO clientesVO) {
+        osID = gravarOrdemDeServico(context, clientesVO);
+        carregarParams();
         it = new Intent(this, OSServicosMenuActivity.class);
         it.putExtras(params);
         startActivity(it);
+    }
+
+    /* Salvar Ordem de Serviço */
+    private Long gravarOrdemDeServico(Context context, ClientesVO clientesVO) {
+        OrdemDeServicosVO ordemDeServicosVO = new OrdemDeServicosVO(clientesVO.getId(), 1L);
+        OrdemDeServicosBO ordemDeServicosBO = OrdemDeServicosBO.getInstance();
+        Long id = -1L;
+        try {
+            id = ordemDeServicosBO.adicionar(this, ordemDeServicosVO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return id;
     }
 }

@@ -20,4 +20,10 @@
     <string name="lblDescricao">Descrição</string>
     <string name="lblServicosSelecionar">Selecionar Serviço</string>
     <string name="lblVisualizar">Visualizar</string>
+    <string name="lblOS">Ordem de Serviço</string>
+    <string name="lblOSid">id -</string>
+    <string name="lblCancelar">Cancelar</string>
+    <string name="lblConcluir">Concluir</string>
+    <string name="lblConcluirCancelar">Concluir / Cancelar OS</string>
+    <string name="lblAddDelServicos">Adicionar / Remover Serviços</string>
 </resources>

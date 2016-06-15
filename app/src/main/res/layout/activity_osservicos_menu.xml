@@ -9,4 +9,106 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="br.com.brunotonia.informatic.View.OSServicosMenuActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lblOS"
+        android:id="@+id/lblOS"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lblOSid"
+        android:id="@+id/lblOSid"
+        android:layout_below="@+id/lblOS"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lblNome"
+        android:id="@+id/lblClienteNome"
+        android:layout_alignTop="@+id/lblOSid"
+        android:layout_toRightOf="@+id/lblOSid"
+        android:layout_toEndOf="@+id/lblOSid"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/lblTelefone"
+        android:id="@+id/lblClienteTelefone"
+        android:layout_below="@+id/lblOSid"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/lblEmail"
+        android:id="@+id/lblClienteEmail"
+        android:layout_below="@+id/lblClienteTelefone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/lblEndereco"
+        android:id="@+id/lblClienteEndereco"
+        android:layout_below="@+id/lblClienteEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblConcluirCancelar"
+        android:id="@+id/btnConcluir"
+        android:layout_above="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblAddDelServicos"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/lblServicos"
+        android:id="@+id/lblServicos"
+        android:layout_below="@+id/lblClienteEndereco"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/lblServicos"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/btnConcluir"
+        android:layout_marginBottom="5dp" />
+
 </RelativeLayout>
