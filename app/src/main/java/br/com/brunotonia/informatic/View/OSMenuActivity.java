@@ -15,7 +15,6 @@ public class OSMenuActivity extends AppCompatActivity {
 
     /* Declaração de elementos de interface */
     private Button btnAdicionar = null;
-    private Button btnEditar = null;
     private Button btnVisualizar = null;
 
     @Override
@@ -25,7 +24,6 @@ public class OSMenuActivity extends AppCompatActivity {
 
         /* Inicialização de elementos de interface */
         btnAdicionar = (Button) findViewById(R.id.btnAdicionar);
-        btnEditar = (Button) findViewById(R.id.btnEditar);
         btnVisualizar = (Button) findViewById(R.id.btnVisualizar);
 
         /* Listeners dos botões */
@@ -33,13 +31,6 @@ public class OSMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chamarTelaAdicionarOS();
-            }
-        });
-
-        btnEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chamarTelaEditarOS();
             }
         });
 
@@ -63,13 +54,8 @@ public class OSMenuActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-    private void chamarTelaEditarOS() {
-        it = new Intent(this, OSVisualizarMenuActivity.class);
-        startActivity(it);
-    }
-
     private void chamarTelaVisualizarOS() {
-        it = new Intent(this, DesenvolvedoresActivity.class);
+        it = new Intent(this, OSVisualizarMenuActivity.class);
         startActivity(it);
     }
 

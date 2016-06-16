@@ -19,7 +19,7 @@ import br.com.brunotonia.informatic.VO.ClientesVO;
 import br.com.brunotonia.informatic.VO.OSServicosVO;
 import br.com.brunotonia.informatic.VO.OrdemDeServicosVO;
 
-public class OSServicosMenuActivity extends AppCompatActivity {
+public class OSVisualizarActivity extends AppCompatActivity {
 
     /* Variáveis entre telas */
     private Intent it = null;
@@ -46,7 +46,7 @@ public class OSServicosMenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_osservicos_menu);
+        setContentView(R.layout.activity_osvisualizar);
 
         /* Recuperar params */
         recuperarParams(this);
@@ -73,6 +73,8 @@ public class OSServicosMenuActivity extends AppCompatActivity {
             /* Edita lblValor */
             lblValor.setText(calculaValor().toString());
         }
+
+        /* Listeners dos Botões */
 
     }
 

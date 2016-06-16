@@ -27,4 +27,7 @@
     <string name="lblConcluirCancelar">Concluir / Cancelar OS</string>
     <string name="lblAddDelServicos">Adicionar / Remover Serviços</string>
     <string name="lblVlrZero">0,00</string>
+    <string name="lblSituacao">Situação</string>
+    <string name="lblEditarVisualizar">Editar / Visualizar</string>
+    <string name="lblDesenvolvedores">Desenvolvedores</string>
 </resources>

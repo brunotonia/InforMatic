@@ -15,7 +15,7 @@ public interface OSSituacaoConstants {
     String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
     Integer VETOR_ID[] = {0, 1 , 2};
-    String VETOR_SITUACOES[] = {"Aberta", "Encerrada", "Cancelada"};
+    String VETOR_SITUACOES[] = {"Aberta", "Concluída", "Cancelada"};
 
     String INSERT_SITUACAO_0 = "INSERT INTO " + TABLE_NAME + " VALUES (" + VETOR_ID[0].toString() + ", \"" + VETOR_SITUACOES[0] + "\")";
     String INSERT_SITUACAO_1 = "INSERT INTO " + TABLE_NAME + " VALUES (" + VETOR_ID[1].toString() + ", \"" + VETOR_SITUACOES[1] + "\")";

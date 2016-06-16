@@ -93,7 +93,7 @@ public class OSClientesSelecionarActivity extends AppCompatActivity {
     private void chamarTelaOSServicosMenu(Context context, ClientesVO clientesVO) {
         osID = gravarOrdemDeServico(context, clientesVO);
         carregarParams();
-        it = new Intent(this, OSServicosMenuActivity.class);
+        it = new Intent(this, OSVisualizarActivity.class);
         it.putExtras(params);
         startActivity(it);
     }

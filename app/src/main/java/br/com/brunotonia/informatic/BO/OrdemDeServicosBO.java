@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.io.Serializable;
+import java.util.List;
 
 import br.com.brunotonia.informatic.DAO.DatabaseHelper;
 import br.com.brunotonia.informatic.DAO.OrdemDeServicosDAO;
@@ -89,4 +90,45 @@ public class OrdemDeServicosBO implements Serializable {
         }
         return ordemDeServicosVO;
     }
+
+    public List<OrdemDeServicosVO> listar(Context context) throws Exception {
+        /* Variáveis do BD */
+        DatabaseHelper helper = new DatabaseHelper(context);
+        SQLiteDatabase db = helper.open();
+        /* Variáveis do Método*/
+        List<OrdemDeServicosVO> servicos = null;
+        /* Recupera Lista de OSServicos do BD */
+        try {
+            db.beginTransaction();
+            servicos = ordemDeServicosDAO.listar(db);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            helper.close();
+        }
+        return servicos;
+    }
+
+    public List<OrdemDeServicosVO> listar(Context context, Long situacao) throws Exception {
+        /* Variáveis do BD */
+        DatabaseHelper helper = new DatabaseHelper(context);
+        SQLiteDatabase db = helper.open();
+        /* Variáveis do Método*/
+        List<OrdemDeServicosVO> servicos = null;
+        /* Recupera Lista de OSServicos do BD */
+        try {
+            db.beginTransaction();
+            servicos = ordemDeServicosDAO.listar(db, situacao);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            helper.close();
+        }
+        return servicos;
+    }
+
 }
