@@ -92,15 +92,19 @@ public class OSClientesSelecionarActivity extends AppCompatActivity {
     /* Metodo para chamar telas */
     private void chamarTelaOSServicosMenu(Context context, ClientesVO clientesVO) {
         osID = gravarOrdemDeServico(context, clientesVO);
-        carregarParams();
-        it = new Intent(this, OSVisualizarActivity.class);
-        it.putExtras(params);
-        startActivity(it);
+        if (osID != -1L) {
+            carregarParams();
+            it = new Intent(this, OSVisualizarActivity.class);
+            it.putExtras(params);
+            startActivity(it);
+        } else {
+            Toast.makeText(this, "Erro! Não foi possível adicionar a Ordem de Serviços", Toast.LENGTH_LONG).show();
+        }
     }
 
     /* Salvar Ordem de Serviço */
     private Long gravarOrdemDeServico(Context context, ClientesVO clientesVO) {
-        OrdemDeServicosVO ordemDeServicosVO = new OrdemDeServicosVO(clientesVO.getId(), 1L);
+        OrdemDeServicosVO ordemDeServicosVO = new OrdemDeServicosVO(clientesVO.getId(), 0L);
         OrdemDeServicosBO ordemDeServicosBO = OrdemDeServicosBO.getInstance();
         Long id = -1L;
         try {

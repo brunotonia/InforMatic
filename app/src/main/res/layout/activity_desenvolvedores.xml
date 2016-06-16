@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Bruno Roberto Vasconcelos Tonia"
         android:id="@+id/textView2"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="1411420564"
         android:id="@+id/textView3"
         android:layout_below="@+id/textView2"
         android:layout_alignParentLeft="true"
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="João Roberto Rodrigues Filho"
         android:id="@+id/textView5"
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
@@ -53,9 +53,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
+        android:text="1311420116"
         android:id="@+id/textView6"
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/lblGH"
+        android:id="@+id/textView7"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -37,10 +38,22 @@ public class OSListarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_oslistar);
 
         /* Inicialização de elementos de interface */
-        listOSs = (ListView) findViewById(R.id.listClientes);
+        listOSs = (ListView) findViewById(R.id.listOS);
 
         /* Recuperar params */
         recuperarParams();
+
+        if (lista.isEmpty()) {
+            /* Exibe mensagem de erro e retorna a tela anterior */
+            Toast.makeText(this, "Erro! Não foi possível carregar a lista de Ordens de Serviço", Toast.LENGTH_LONG).show();
+            params = new Bundle();
+            it.putExtras(params);
+            it = new Intent(this, OSVisualizarMenuActivity.class);
+            startActivity(it);
+        } else {
+            adapter = new ArrayAdapter<OrdemDeServicosVO>(this, android.R.layout.simple_list_item_1, lista);
+            listOSs.setAdapter(adapter);
+        }
 
         /* Listeners */
         listOSs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,15 +71,14 @@ public class OSListarActivity extends AppCompatActivity {
         it = getIntent();
         params = it.getExtras();
         osSituacao = params.getLong("osSituacao");
-        carregarOSs(osSituacao);
-
+        carregarOSs();
     }
 
     /* Carrgar lista de Clientes */
-    private void carregarOSs(Long osSituacao) {
+    private void carregarOSs() {
         OrdemDeServicosBO ordemDeServicosBO = OrdemDeServicosBO.getInstance();
         try {
-            this.lista = ordemDeServicosBO.listar(this, osSituacao);
+            lista = ordemDeServicosBO.listar(this, osSituacao);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,7 +87,7 @@ public class OSListarActivity extends AppCompatActivity {
     private void chamarTelaOSVisualizar(OrdemDeServicosVO ordemDeServicosVO) {
         params = new Bundle();
         params.putLong("osID", ordemDeServicosVO.getId());
-        it = new Intent(this, ClientesAddActivity.class);
+        it = new Intent(this, OSVisualizarActivity.class);
         it.putExtras(params);
         startActivity(it);
     }

@@ -81,8 +81,8 @@ public class OrdemDeServicosDAO {
         OrdemDeServicosVO ordemDeServicosVO = null;
         Cursor cursor = db.query(
                 OrdemDeServicosConstants.TABLE_NAME,
-                new String[]{ServicosConstants.COLUMN_ID, ServicosConstants.COLUMN_SERVICO,
-                        ServicosConstants.COLUMN_VALOR, ServicosConstants.COLUMN_DESCRICAO},
+                new String[]{OrdemDeServicosConstants.COLUMN_ID, OrdemDeServicosConstants.COLUMN_CLIENTE,
+                        OrdemDeServicosConstants.COLUMN_SITUACAO},
                 ServicosConstants.COLUMN_ID + " IS ? ",
                 new String[]{id.toString()},
                 null,
@@ -96,7 +96,5 @@ public class OrdemDeServicosDAO {
         }
         return ordemDeServicosVO;
     }
-
-
 
 }

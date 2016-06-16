@@ -30,4 +30,5 @@
     <string name="lblSituacao">Situação</string>
     <string name="lblEditarVisualizar">Editar / Visualizar</string>
     <string name="lblDesenvolvedores">Desenvolvedores</string>
+    <string name="lblGH">github.com/brunotonia/informatic</string>
 </resources>
