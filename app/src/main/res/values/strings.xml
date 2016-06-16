@@ -31,4 +31,7 @@
     <string name="lblEditarVisualizar">Editar / Visualizar</string>
     <string name="lblDesenvolvedores">Desenvolvedores</string>
     <string name="lblGH">github.com/brunotonia/informatic</string>
+    <string name="lblAbertas">Abertas</string>
+    <string name="lblConcluidas">Concluídas</string>
+    <string name="lblCanceladas">Canceladas</string>
 </resources>
