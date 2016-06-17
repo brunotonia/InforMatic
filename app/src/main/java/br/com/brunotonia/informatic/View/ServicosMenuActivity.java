@@ -47,7 +47,6 @@ public class ServicosMenuActivity extends AppCompatActivity {
     /* Métodos para chamar novas telas */
     private void chamarTelaClientesAdd () {
         params = new Bundle();
-        params.putLong("servicoID", -1L);
         it = new Intent(this, ServicosAddActivity.class);
         it.putExtras(params);
         startActivity(it);
@@ -55,7 +54,7 @@ public class ServicosMenuActivity extends AppCompatActivity {
 
     private void chamarTelaClientesListar () {
         params = new Bundle();
-        params.putLong("servicoID", -2L);
+        params.putLong("servicoAcao", 1L);
         it = new Intent(this, ServicosListarActivity.class);
         it.putExtras(params);
         startActivity(it);

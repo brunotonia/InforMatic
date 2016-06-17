@@ -56,4 +56,9 @@ public class OSServicosVO {
     public void setValor(Float valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Serviço " + id;
+    }
 }

@@ -27,7 +27,8 @@
         <activity android:name=".View.OSClientesSelecionarActivity" />
         <activity android:name=".View.ServicosSelecionarActivity" />
         <activity android:name=".View.OSVisualizarMenuActivity" />
-        <activity android:name=".View.OSVisualizarActivity"></activity>
+        <activity android:name=".View.OSVisualizarActivity" />
+        <activity android:name=".View.OSServicosActivity"></activity>
     </application>
 
 </manifest>

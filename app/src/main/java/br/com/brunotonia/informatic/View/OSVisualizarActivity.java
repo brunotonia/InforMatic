@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -75,6 +76,16 @@ public class OSVisualizarActivity extends AppCompatActivity {
         }
 
         /* Listeners dos Botões */
+        btnServicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                carregarParams();
+                it = new Intent(OSVisualizarActivity.this, OSServicosActivity.class);
+                it.putExtras(params);
+                startActivity(it);
+            }
+        });
+
 
     }
 
@@ -86,7 +97,7 @@ public class OSVisualizarActivity extends AppCompatActivity {
         // chamar outros métodos aqui
         recuperarOS(context);
         recuperarCliente(context);
-        carregarOSServicos();
+        carregarOSServicos(context);
     }
 
     /* Carregar params */
@@ -116,10 +127,10 @@ public class OSVisualizarActivity extends AppCompatActivity {
     }
 
     /* Carrgar lista de OSServicos */
-    private void carregarOSServicos() {
+    private void carregarOSServicos(Context context) {
         OSServicosBO osServicosBO = OSServicosBO.getInstance();
         try {
-            this.lista = osServicosBO.listar(this);
+            this.lista = osServicosBO.listar(context);
         } catch (Exception e) {
             e.printStackTrace();
         }

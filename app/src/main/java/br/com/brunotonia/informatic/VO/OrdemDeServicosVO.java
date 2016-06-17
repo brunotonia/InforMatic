@@ -48,4 +48,8 @@ public class OrdemDeServicosVO {
         this.situacao = situacao;
     }
 
+    @Override
+    public String toString() {
+        return "Número: " + id;
+    }
 }

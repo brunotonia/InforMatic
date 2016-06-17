@@ -1,5 +1,6 @@
 package br.com.brunotonia.informatic.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import br.com.brunotonia.informatic.BO.OSServicosBO;
 import br.com.brunotonia.informatic.BO.ServicosBO;
 import br.com.brunotonia.informatic.R;
+import br.com.brunotonia.informatic.VO.OSServicosVO;
 import br.com.brunotonia.informatic.VO.ServicosVO;
 
 public class ServicosListarActivity extends AppCompatActivity {
@@ -20,7 +23,8 @@ public class ServicosListarActivity extends AppCompatActivity {
     /* Variáveis entre telas */
     private Intent it = null;
     private Bundle params = null;
-    private Long servicoID = null;
+    private Long servicoAcao = null;
+    private Long osID = null;
 
     /* Outras Variáveis */
     private ServicosVO servicosVO = null;
@@ -43,7 +47,7 @@ public class ServicosListarActivity extends AppCompatActivity {
 
         if (lista.isEmpty()) {
             /* Exibe mensagem de erro e retorna a tela anterior */
-            Toast.makeText(this, "Erro! Não foi possível carregar a lista de Clientes", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Erro! Não foi possível carregar a lista de Serviços", Toast.LENGTH_LONG).show();
             params = new Bundle();
             it.putExtras(params);
             it = new Intent(this, ClientesMenuActivity.class);
@@ -58,7 +62,11 @@ public class ServicosListarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 servicosVO = (ServicosVO) listServicos.getItemAtPosition(position);
-                chamarTelaServicosEditar(servicosVO);
+                if (servicoAcao == 1L ) {
+                    chamarTelaServicosEditar(servicosVO);
+                } else if (servicoAcao == 2L) {
+                    chamarTelaOSVisualizar(ServicosListarActivity.this);
+                }
             }
         });
 
@@ -68,13 +76,15 @@ public class ServicosListarActivity extends AppCompatActivity {
     private void recuperarParams() {
         it = getIntent();
         params = it.getExtras();
-        servicoID = params.getLong("servicoID");
-        /* servicoID > -1L é edição de Cliente */
-        if (servicoID == -2L) {
-            carregarServicos();
-        } else {
+        servicoAcao = params.getLong("servicoAcao");
+        if (servicoAcao == 2L) {
+            osID = params.getLong("osID");
+        }
+        /* servicoAcao > -1L */
+        carregarServicos();
+        if (lista.isEmpty()) {
             /* Exibe mensagem de erro e volta a tela anterior */
-            Toast.makeText(this, "Erro! Não foi possível carregar a lista de Clientes", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Erro! Não foi possível carregar a lista de Serviços", Toast.LENGTH_LONG).show();
             params = new Bundle();
             it.putExtras(params);
             it = new Intent(this, ServicosMenuActivity.class);
@@ -82,7 +92,7 @@ public class ServicosListarActivity extends AppCompatActivity {
         }
     }
 
-    /* Carrgar lista de Clientes */
+    /* Carrgar lista de Serviços */
     private void carregarServicos() {
         ServicosBO servicosBO = ServicosBO.getInstance();
         try {
@@ -92,12 +102,33 @@ public class ServicosListarActivity extends AppCompatActivity {
         }
     }
 
+    /* Método */
     private void chamarTelaServicosEditar(ServicosVO servicosVO) {
         params = new Bundle();
         params.putLong("servicoID", servicosVO.getId());
         it = new Intent(this, ServicosAddActivity.class);
         it.putExtras(params);
         startActivity(it);
+    }
+
+    private void chamarTelaOSVisualizar(Context context) {
+        OSServicosBO osServicosBO = OSServicosBO.getInstance();
+        OSServicosVO osServicosVO = new OSServicosVO(osID, servicosVO.getId(), servicosVO.getValor());
+        Long resultado = -1L;
+        try {
+            resultado = osServicosBO.adicionar(context, osServicosVO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (resultado != -1L) {
+            params = new Bundle();
+            params.putLong("osID", osID);
+            it = new Intent(this, ServicosAddActivity.class);
+            it.putExtras(params);
+            startActivity(it);
+        } else {
+            Toast.makeText(this, "Erro! Não foi possível selecionar o Serviço", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

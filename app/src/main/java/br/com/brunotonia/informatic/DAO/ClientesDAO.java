@@ -26,6 +26,7 @@ public class ClientesDAO {
     public boolean editar(SQLiteDatabase db, ClientesVO cliente) throws Exception {
         ContentValues values = new ContentValues();
         values.put(ClientesConstants.COLUMN_ID, cliente.getId());
+        values.put(ClientesConstants.COLUMN_NOME, cliente.getNome());
         values.put(ClientesConstants.COLUMN_TELEFONE, cliente.getTelefone());
         values.put(ClientesConstants.COLUMN_ENDERECO, cliente.getEndereco());
         values.put(ClientesConstants.COLUMN_EMAIL, cliente.getEmail());
