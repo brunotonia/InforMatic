@@ -5,20 +5,24 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.brunotonia.informatic.BO.ClientesBO;
 import br.com.brunotonia.informatic.BO.OSServicosBO;
 import br.com.brunotonia.informatic.BO.OrdemDeServicosBO;
+import br.com.brunotonia.informatic.BO.ServicosBO;
 import br.com.brunotonia.informatic.R;
 import br.com.brunotonia.informatic.VO.ClientesVO;
 import br.com.brunotonia.informatic.VO.OSServicosVO;
 import br.com.brunotonia.informatic.VO.OrdemDeServicosVO;
+import br.com.brunotonia.informatic.VO.ServicosVO;
 
 public class OSVisualizarActivity extends AppCompatActivity {
 
@@ -86,6 +90,20 @@ public class OSVisualizarActivity extends AppCompatActivity {
             }
         });
 
+        listServicos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                OSServicosVO osServicosVO = (OSServicosVO) listServicos.getItemAtPosition(position);
+                ServicosBO servicosBO = ServicosBO.getInstance();
+                ServicosVO servicosVO = null;
+                try {
+                    servicosVO = servicosBO.selecionar(OSVisualizarActivity.this, osServicosVO.getServico());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(OSVisualizarActivity.this, "Descrição: " + servicosVO.getDescricao() + "\nValor: R$ " + servicosVO.getValor(), Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
