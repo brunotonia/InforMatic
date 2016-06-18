@@ -90,6 +90,26 @@ public class OSServicosBO {
         return servicos;
     }
 
+    public List<OSServicosVO> listar(Context context, Long osID) throws Exception {
+        /* Variáveis do BD */
+        DatabaseHelper helper = new DatabaseHelper(context);
+        SQLiteDatabase db = helper.open();
+        /* Variáveis do Método*/
+        List<OSServicosVO> servicos = null;
+        /* Recupera Lista de OSServicos do BD */
+        try {
+            db.beginTransaction();
+            servicos = osServicosDAO.listar(db, osID);
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            db.endTransaction();
+            helper.close();
+        }
+        return servicos;
+    }
+
     public OSServicosVO selecionar(Context context, Long servicoID) throws Exception {
         /* Variáveis do BD */
         DatabaseHelper helper = new DatabaseHelper(context);

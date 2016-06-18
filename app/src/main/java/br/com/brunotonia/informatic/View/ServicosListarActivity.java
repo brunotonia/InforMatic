@@ -23,7 +23,6 @@ public class ServicosListarActivity extends AppCompatActivity {
     /* Variáveis entre telas */
     private Intent it = null;
     private Bundle params = null;
-    private Long servicoAcao = null;
     private Long osID = null;
 
     /* Outras Variáveis */
@@ -62,11 +61,7 @@ public class ServicosListarActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 servicosVO = (ServicosVO) listServicos.getItemAtPosition(position);
-                if (servicoAcao == 1L ) {
-                    chamarTelaServicosEditar(servicosVO);
-                } else if (servicoAcao == 2L) {
-                    chamarTelaOSVisualizar(ServicosListarActivity.this);
-                }
+                chamarTelaServicosEditar(servicosVO);
             }
         });
 
@@ -76,11 +71,6 @@ public class ServicosListarActivity extends AppCompatActivity {
     private void recuperarParams() {
         it = getIntent();
         params = it.getExtras();
-        servicoAcao = params.getLong("servicoAcao");
-        if (servicoAcao == 2L) {
-            osID = params.getLong("osID");
-        }
-        /* servicoAcao > -1L */
         carregarServicos();
         if (lista.isEmpty()) {
             /* Exibe mensagem de erro e volta a tela anterior */

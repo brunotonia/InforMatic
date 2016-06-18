@@ -103,7 +103,7 @@ public class OSVisualizarActivity extends AppCompatActivity {
     /* Carregar params */
     private void carregarParams() {
         params = new Bundle();
-        params.putLong("osID", osID);
+        params.putLong("osID", ordemDeServicosVO.getId());
     }
 
     /* Recuperar OS */
@@ -130,7 +130,10 @@ public class OSVisualizarActivity extends AppCompatActivity {
     private void carregarOSServicos(Context context) {
         OSServicosBO osServicosBO = OSServicosBO.getInstance();
         try {
-            this.lista = osServicosBO.listar(context);
+            this.lista = osServicosBO.listar(context, osID);
+            for (OSServicosVO ossVO : lista) {
+                ossVO.setContext(context);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -147,7 +150,7 @@ public class OSVisualizarActivity extends AppCompatActivity {
 
     /* Editar rótulos */
     private void editarRotulos() {
-        lblOSid.setText(osID.toString());
+        lblOSid.setText(osID.toString() + " - ");
         lblClienteNome.setText(clientesVO.getNome());
         lblClienteTelefone.setText(clientesVO.getTelefone());
         lblClienteEmail.setText(clientesVO.getEmail());

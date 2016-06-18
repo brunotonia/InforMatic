@@ -12,6 +12,7 @@ public class OrdemDeServicosVO {
     private Long id;
     private Long cliente;
     private Long situacao;
+    private Context context;
 
     public OrdemDeServicosVO(Long cliente, Long situacao) {
         this.cliente = cliente;
@@ -48,8 +49,28 @@ public class OrdemDeServicosVO {
         this.situacao = situacao;
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     @Override
     public String toString() {
-        return "Número: " + id;
+        if (context == null) {
+            return "Número: " + id;
+        }
+        else {
+            ClientesBO clientesBO = ClientesBO.getInstance();
+            ClientesVO clientesVO = null;
+            try {
+                clientesVO = clientesBO.selecionar(context, cliente);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return id + " - " + clientesVO.getNome();
+        }
     }
 }

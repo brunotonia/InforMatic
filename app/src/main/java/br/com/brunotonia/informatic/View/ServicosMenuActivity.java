@@ -31,30 +31,30 @@ public class ServicosMenuActivity extends AppCompatActivity {
         btnAdicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamarTelaClientesAdd();
+                chamarTelaServicosAdd();
             }
         });
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chamarTelaClientesListar();
+                chamarTelaServicosListar();
             }
         });
 
     }
 
     /* Métodos para chamar novas telas */
-    private void chamarTelaClientesAdd () {
+    private void chamarTelaServicosAdd() {
         params = new Bundle();
+        params.putLong("servicoID", -1L);
         it = new Intent(this, ServicosAddActivity.class);
         it.putExtras(params);
         startActivity(it);
     }
 
-    private void chamarTelaClientesListar () {
+    private void chamarTelaServicosListar() {
         params = new Bundle();
-        params.putLong("servicoAcao", 1L);
         it = new Intent(this, ServicosListarActivity.class);
         it.putExtras(params);
         startActivity(it);

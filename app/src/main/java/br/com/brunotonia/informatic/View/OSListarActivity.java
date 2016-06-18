@@ -1,5 +1,6 @@
 package br.com.brunotonia.informatic.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class OSListarActivity extends AppCompatActivity {
         listOSs = (ListView) findViewById(R.id.listOS);
 
         /* Recuperar params */
-        recuperarParams();
+        recuperarParams(this);
 
         if (lista.isEmpty()) {
             /* Exibe mensagem de erro e retorna a tela anterior */
@@ -67,18 +68,21 @@ public class OSListarActivity extends AppCompatActivity {
     }
 
     /* Recuperar params */
-    private void recuperarParams() {
+    private void recuperarParams(Context context) {
         it = getIntent();
         params = it.getExtras();
         osSituacao = params.getLong("osSituacao");
-        carregarOSs();
+        carregarOSs(context);
     }
 
     /* Carrgar lista de Clientes */
-    private void carregarOSs() {
+    private void carregarOSs(Context context) {
         OrdemDeServicosBO ordemDeServicosBO = OrdemDeServicosBO.getInstance();
         try {
             lista = ordemDeServicosBO.listar(this, osSituacao);
+            for (OrdemDeServicosVO osVO : lista) {
+                osVO.setContext(context);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

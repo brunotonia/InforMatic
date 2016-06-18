@@ -1,6 +1,9 @@
 package br.com.brunotonia.informatic.VO;
 
+import android.content.Context;
+
 import br.com.brunotonia.informatic.BO.ClientesBO;
+import br.com.brunotonia.informatic.BO.ServicosBO;
 
 /**
  * Created by bruno on 10/06/16.
@@ -11,6 +14,7 @@ public class OSServicosVO {
     private Long os;
     private Long servico;
     private Float valor;
+    private Context context;
 
     public OSServicosVO(Long os, Long servico, Float valor) {
         this.os = os;
@@ -57,8 +61,27 @@ public class OSServicosVO {
         this.valor = valor;
     }
 
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     @Override
     public String toString() {
-        return "Serviço " + id;
+        if (context == null) {
+            return "Serviço " + id;
+        } else {
+            ServicosBO servicosBO = ServicosBO.getInstance();
+            ServicosVO servicosVO = null;
+            try {
+                servicosVO = servicosBO.selecionar(context, servico);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return servicosVO.getServico();
+        }
     }
 }
